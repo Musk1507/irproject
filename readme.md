@@ -8,7 +8,7 @@
 
 1. Clone the repository.
 2. Open in any python compatible editor. 
-3. Run ```sh Pyhton3 summarize.py ``` in the current working directory in powershell/terminal.
+3. Run ```Pyhton3 summarize.py ``` in the current working directory in powershell/terminal.
    or Go to ".vscode", in settings.json paste your python.exe route. Then open summarize.py and run.
 
 ### Grading links:
