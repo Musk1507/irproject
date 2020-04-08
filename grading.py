@@ -2,7 +2,7 @@ import re #Package for splitting
 from spellchecker import SpellChecker
 
 
-def grading(file_name,file_name1):
+def gradingFunction(file_name,file_name1):
     file = open(file_name, "r")
     file1 = open(file_name1,"r")
     filedata = file.readlines()
@@ -11,6 +11,7 @@ def grading(file_name,file_name1):
     marks = 7.5
     mistake_count = 0
     misspelled = []
+    vocab = []
     articles = re.split(', |"|_|-|!|\. ',filedata[0])
 
     for i in range(0,len(filedata1)):
@@ -23,6 +24,7 @@ def grading(file_name,file_name1):
             for i in range(0,len(filedata1)):
                 if words.lower() == filedata1[i]:
                     marks += 0.4 #Adding "+0.4" for good vocabulary
+                    vocab.append(words) #Making list of good vocabulary
             if wrong_word:
                 marks = marks - 0.4 #For spelling mistakes "-0.4"
                 misspelled.append(wrong_word) #Making a list of spelling mistakes 
@@ -35,7 +37,7 @@ def grading(file_name,file_name1):
         marks = 10
     if marks<4:
         marks = 4
+    print("\nAutomatically Generated Score:")
     print("You have scored:",round(marks,1),"on 10")
     print("These are the spelling mistakes you have made:",misspelled)
-    
-grading("msft.txt","dataset.txt")
+    print("These are some good vocabulary terms that you have been graded on:",vocab,"\n")
