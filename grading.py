@@ -15,10 +15,14 @@ def grading(file_name):
             count += 1 #number of words
             wrong_word = spell.unknown([words])
             if wrong_word:
-                misspelled.append(wrong_word)
-    if count > 200:
-        marks -= 2 #For exceeding the maximum number of lines -2
-    print("You have scored:",marks,"on 10")
+                if (marks>4):
+                    marks = marks - 0.2 #For spelling mistakes "-0.2"
+                misspelled.append(wrong_word) #Making a list of spelling mistakes
+    if ((count > 200)or(count < 50)):
+        if (marks>4):
+            marks -= 2 #For more/less the max/min number of lines "-2"
+            
+    print("You have scored:",round(marks,1),"on 10")
     print("These are the spelling mistakes you have made:",misspelled)
 
 grading("msft.txt")
