@@ -1,7 +1,6 @@
 import re #Package for splitting 
 from spellchecker import SpellChecker
 
-
 def gradingFunction(file_name,file_name1):
     file = open(file_name, "r")
     file1 = open(file_name1,"r")
@@ -37,7 +36,10 @@ def gradingFunction(file_name,file_name1):
         marks = 10
     if marks<4:
         marks = 4
-    print("\nAutomatically Generated Score:")
-    print("You have scored:",round(marks,1),"on 10")
-    print("These are the spelling mistakes you have made:",misspelled)
-    print("These are some good vocabulary terms that you have been graded on:",vocab,"\n")
+    #print("\nAutomatically Generated Score:")
+    #print("You have scored:",round(marks,1),"on 10")
+    #print("These are the spelling mistakes you have made:",misspelled)
+    #print("These are some good vocabulary terms that you have been graded on:",vocab,"\n")
+    return marks,misspelled,vocab
+
+gradingFunction("essay3.txt","dataset.txt")

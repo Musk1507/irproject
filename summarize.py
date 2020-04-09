@@ -2,7 +2,7 @@ import re
 import networkx as nx
 import nltk.corpus
 import numpy as np
-from grading import gradingFunction 
+#from grading import gradingFunction 
 from nltk.cluster.util import cosine_distance
 from nltk.corpus import stopwords
 
@@ -11,10 +11,10 @@ def read_article(file_name):
     filedata = file.readlines()
     article = re.split('! |\? |\. |\.',filedata[0])
     sentences = []
-    print("\n\t\t AUTOMATED ESSAY SUMMARIZATION AND GRADING")
-    print("\nInitial Essay:")
+    #print("\n\t\t AUTOMATED ESSAY SUMMARIZATION AND GRADING")
+    #print("\nInitial Essay:")
     for sentence in article:
-        print(sentence)
+        #print(sentence)
         sentences.append(sentence.replace("[^a-zA-Z]", " ").split(" "))
     sentences.pop()
 
@@ -76,13 +76,12 @@ def generate_summary(file_name, top_n=5):
 
     # Step 4 - Sort the rank and pick top sentences
     ranked_sentence = sorted(((scores[i],s) for i,s in enumerate(sentences)), reverse=True)
-    print("\nIndexes of top ranked_sentence order are ", ranked_sentence)
+    #print("\nIndexes of top ranked_sentence order are ", ranked_sentence)
 
     for i in range(top_n):
       summarize_text.append(" ".join(ranked_sentence[i][1]))
 
     # Step 5 - Offcourse, output the summarize texr
-    print("\nSUMMARIZED TEXT:", ". ".join(summarize_text))
-    gradingFunction(file_name,"dataset.txt")
-
-generate_summary( "essay3.txt", 5)
+    summary =  ". ".join(summarize_text)
+    #gradingFunction(file_name,"dataset.txt")
+    return ranked_sentence,summary
