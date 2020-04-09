@@ -21,4 +21,4 @@
 
 ### Useful links:
 
-1. i/p o/p in web - https://blog.pythonanywhere.com/169/
+1. ip/op in web - https://blog.pythonanywhere.com/169/
