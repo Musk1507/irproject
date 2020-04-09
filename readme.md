@@ -18,3 +18,7 @@
 ### Dataset:
 1. Sat top 262 words for good Vocabulary - https://blog.prepscholar.com/sat-vocabulary-words
 2. Top 100 words that adults should know - https://drdianehamilton.com/top-100-vocabulary-words-that-adults-should-know/
+
+### Useful links:
+
+1. i/p o/p in web - https://blog.pythonanywhere.com/169/

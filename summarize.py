@@ -7,9 +7,9 @@ from nltk.cluster.util import cosine_distance
 from nltk.corpus import stopwords
 
 def read_article(file_name):
-    file = open(file_name, "r")
-    filedata = file.readlines()
-    article = re.split('! |\? |\. |\.',filedata[0])
+    #file = open(file_name, "r")
+    filedata = file_name
+    article = re.split('! |\? |\. |\.',filedata)
     sentences = []
     #print("\n\t\t AUTOMATED ESSAY SUMMARIZATION AND GRADING")
     #print("\nInitial Essay:")
