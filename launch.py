@@ -20,10 +20,13 @@ def hello_world():
         h1,h2,h3,h4 {color: Teal;}
     </style>
     <body style="width: 880px; margin: auto; background-color: GhostWhite;">
-        <h1><center>Automated Essay Summarization and Grading</center></h1>
+        <br><h1><center>Automated Essay Summarization and Grading</center></h1>
         <form action="/grade">
-            Enter your essay: <input type='text' name='essay' placeholder="Enter your essay"><br>
-            <button type="submit">Submit</button>
+            <br>
+            <h4>Enter your essay here:</h4><br>
+            <textarea rows = "10" cols = "120" name = "essay">
+            </textarea><br><br>
+            <div align= "right"><button type="submit">Submit</button></div>
         </form>
     </body></html>
     """
@@ -33,7 +36,11 @@ def hello_world():
 def summarize_grade():
     essay = request.args.get('essay', 'World')
     ranked_sentence,summary = generate_summary(essay, 5)
-    marks,mispelled,vocab = gradingFunction(essay,"dataset.txt")
+    marks,mispelled,vocab,flg = gradingFunction(essay,"dataset.txt")
+    if flg == 1:
+        length = "The essay you have typed is not of the appropriate size"
+    else:
+        length = "The length of your essay is perfect"
     return '''
     <!DOCTYPE html>
     <head>
@@ -54,6 +61,7 @@ def summarize_grade():
         <p><h4>Grade:</h4> You have scored: '''+str(round(marks,1))+'''/10</p>
         <p>These are the spelling mistakes you have made: '''+str(mispelled)+''' </p>
         <p>These are some good vocabulary terms that you have been graded on: '''+str(vocab)+''' </p>
+        <p>'''+length+''' </p>
     </body>
     </html>
     '''

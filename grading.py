@@ -9,6 +9,7 @@ def gradingFunction(file_name,file_name1):
     spell = SpellChecker()
     marks = 7.5
     mistake_count = 0
+    flg = 0
     misspelled = []
     vocab = []
     articles = re.split(', |"|" |-|! |!|\? |\?|\. |\.',filedata)
@@ -31,6 +32,7 @@ def gradingFunction(file_name,file_name1):
 
     if ((mistake_count > 500)or(mistake_count < 50)):
         marks -= 2 #For more/less the max/min number of lines "-2"
+        flg = 1
         
     if marks>10:
         marks = 10
@@ -40,6 +42,6 @@ def gradingFunction(file_name,file_name1):
     #print("You have scored:",round(marks,1),"on 10")
     #print("These are the spelling mistakes you have made:",misspelled)
     #print("These are some good vocabulary terms that you have been graded on:",vocab,"\n")
-    return marks,misspelled,vocab
+    return marks,misspelled,vocab,flg
 
 #gradingFunction("essay3.txt","dataset.txt")
