@@ -10,6 +10,7 @@
 2. Open in any python compatible editor. 
 3. Run ```Pyhton3 launch.py```  in the current working directory in powershell/terminal.
    or Go to ".vscode", in settings.json paste your python.exe route. Then open launch.py and run.
+4. Open Browser and go to ```localhost:5000```
 
 ### Grading links:
 1. Essay mistakes - https://custom-writing.org/blog/writing-tips/Common-Mistakes-Essay-Writing
