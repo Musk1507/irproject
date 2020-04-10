@@ -2,11 +2,12 @@ import re #Package for splitting
 from spellchecker import SpellChecker
 
 def gradingFunction(file_name,file_name1):
+    file_name = file_name[:-1]
     file1 = open(file_name1,"r")
     filedata1 = file1.readlines()
     spell = SpellChecker()
-    marks = 7.5
-    mistake_count = 0
+    marks = 75
+    count = 0
     flg = 0
     misspelled = []
     vocab = []
@@ -17,23 +18,37 @@ def gradingFunction(file_name,file_name1):
 
     for sentences in articles:
         for words in sentences.split(" "):
-            mistake_count += 1 
+            count += 1 
             wrong_word = spell.unknown([words]) #Catches spelling mistakes
             for i in range(0,len(filedata1)):
                 if words.lower() == filedata1[i].lower():
-                    marks += 0.4 #Adding "+0.4" for good vocabulary
+                    marks += 4 #Adding "+4" for good vocabulary
                     vocab.append(words) #Making list of good vocabulary
             if wrong_word:
-                marks = marks - 0.2 #For spelling mistakes "-0.2"
+                marks = marks - 2 #For spelling mistakes "-2"
                 misspelled.append(wrong_word) #Making a list of spelling mistakes 
 
 
-    if ((mistake_count > 500)or(mistake_count < 50)):
-        marks -= 2 #For more/less the max/min number of lines "-2"
+    if ((count > 500)or(count < 50)):
+        marks -= 20 #For more/less the max/min number of lines "-20"
         flg = 1
         
-    if marks>10:
-        marks = 10
-    if marks<4:
-        marks = 4
-    return marks,misspelled,vocab,flg
+    if marks>100:
+        marks = 100
+    if marks<40:
+        marks = 40
+
+    if (marks >= 90): 
+        grade = "S" 
+    elif (marks >= 80): 
+        grade = "A" 
+    elif (marks >= 70): 
+        grade = "B" 
+    elif (marks >= 60): 
+        grade = "C" 
+    elif (marks >= 50): 
+        grade = "D" 
+    else: 
+        grade = "E"
+
+    return marks,misspelled,vocab,flg,grade

@@ -27,13 +27,13 @@ def hello_world():
             For some, writing an essay is as simple as sitting down at their computer and beginning to type. But, a lot more planning goes into writing an essay successfully. If you have never written an essay before, or if you struggle with writing and want to improve your skills, you have come to the right place. AESG is a software that will cretique your essay immediatley and help you improve your essay writing skills.
         </div>
         <form action="/grade">
-            <br>
             <h4>Enter your essay here:</h4><br>
             <div class="alert alert-warning" role="alert">
             Please note: Your essay must be greater than 250 words but must not exceede 500 words, also do not leave any extra spaces before or after your essay.
             </div><br>
             <textarea rows = "10" cols = "120" class="form-control" name = "essay"></textarea><br><br>
             <div align= "right"><button type="submit" class="btn btn-success">Submit</button></div>
+            <br><br>
         </form>
     </body></html>
     """
@@ -43,7 +43,7 @@ def hello_world():
 def summarize_grade():
     essay = request.args.get('essay', 'World')
     ranked_sentence,summary = generate_summary(essay, 5)
-    marks,mispelled,vocab,flg = gradingFunction(essay,"dataset.txt")
+    marks,mispelled,vocab,flg,grade = gradingFunction(essay,"dataset.txt")
     if flg == 1:
         length = "The essay you have typed is not of the appropriate size"
     else:
@@ -71,7 +71,7 @@ def summarize_grade():
         <div class="alert alert-success" role="alert">
             Your essay has been graded succesfully
         </div>
-        <p><h4>Grade:</h4> You have scored: '''+str(round(marks,1))+'''/10</p>
+        <p><h4>Your Grade:    '''+grade+'''</h4> You have scored: '''+str(round(marks))+'''/100</p>
         <p>These are the spelling mistakes you have made: '''+str(mispelled)+''' </p>
         <p>These are some good vocabulary terms that you have been graded on: '''+str(vocab)+''' </p>
         <p>'''+length+''' </p>
