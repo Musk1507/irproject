@@ -8,8 +8,8 @@
 
 1. Clone the repository.
 2. Open in any python compatible editor. 
-3. Run ```Pyhton3 launch.py```  in the current working directory in powershell/terminal.
-   or Go to ".vscode", in settings.json paste your python.exe route. Then open launch.py and run.
+3. Open launch.py and run.
+   or Run ```Pyhton3 launch.py```  in the current working directory in powershell/terminal.
 4. Open Browser and go to ```localhost:5000```
 
 ### Grading links:
