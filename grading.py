@@ -2,9 +2,7 @@ import re #Package for splitting
 from spellchecker import SpellChecker
 
 def gradingFunction(file_name,file_name1):
-    #file = open(file_name, "r")
     file1 = open(file_name1,"r")
-    filedata = file_name
     filedata1 = file1.readlines()
     spell = SpellChecker()
     marks = 7.5
@@ -12,7 +10,7 @@ def gradingFunction(file_name,file_name1):
     flg = 0
     misspelled = []
     vocab = []
-    articles = re.split(', |"|" |-|! |!|\? |\?|\. |\.',filedata)
+    articles = re.split(', |"|" |-|! |!|\? |\?|\. |\.',file_name)
 
     for i in range(0,len(filedata1)):
         filedata1[i] = (filedata1[i].rstrip('\n')) #Making clean words from our dataset
@@ -38,10 +36,4 @@ def gradingFunction(file_name,file_name1):
         marks = 10
     if marks<4:
         marks = 4
-    #print("\nAutomatically Generated Score:")
-    #print("You have scored:",round(marks,1),"on 10")
-    #print("These are the spelling mistakes you have made:",misspelled)
-    #print("These are some good vocabulary terms that you have been graded on:",vocab,"\n")
     return marks,misspelled,vocab,flg
-
-#gradingFunction("essay3.txt","dataset.txt")
